@@ -1,0 +1,54 @@
+<idea-plugin version="2">
+    <id>com.thoughtworks.coral.switch.extension</id>
+    <name>switch-extension</name>
+    <version>0.1</version>
+    <vendor email="zcwang@thoughtworks.com" url="http://www.thoughtworks.com">ThoughtWorks, Inc.</vendor>
+
+    <description><![CDATA[
+        在文件路径和基本名相同, 但扩展名不同的文件之间切换.
+        默认支持顺序为: html -> js或css, js -> test.js或html, css -> html, test.js -> js.
+        处理过程中, jade/htm扩展名等同于html, ts/coffee/es6扩展名等同于js, scss/less/styl扩展名等同于css.
+    ]]></description>
+
+    <change-notes><![CDATA[
+    ]]>
+    </change-notes>
+
+    <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="131"/>
+
+    <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
+
+    <project-components>
+        <!-- Add your project components here -->
+    </project-components>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="com.thoughtworks.coral.SwitchNext"
+                class="com.thoughtworks.coral.SwitchNext" text="切换到下一种文件"
+                description="切换到同名但是扩展名不同的下一个文件">
+            <add-to-group group-id="GoToTargetEx" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl l"/>
+        </action>
+        <action id="com.thoughtworks.coral.SwitchPrev"
+                class="com.thoughtworks.coral.SwitchPrev" text="切换到上一种文件"
+                description="切换到同名但是扩展名不同的上一个文件">
+            <add-to-group group-id="GoToTargetEx" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift l"/>
+        </action>
+    </actions>
+
+</idea-plugin>

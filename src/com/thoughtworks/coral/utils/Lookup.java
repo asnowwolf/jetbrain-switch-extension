@@ -1,9 +1,9 @@
-package com.thoughtworks.utils;
+package com.thoughtworks.coral.utils;
 
 import java.util.List;
 
 public class Lookup {
-    static int findSuffix(String text, List<String> suffixes) {
+    public static int findSuffix(String text, List<String> suffixes) {
         for (int i = 0; i < suffixes.size(); ++i) {
             String suffix = suffixes.get(i);
             if (text.endsWith(suffix)) {

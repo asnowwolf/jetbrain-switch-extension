@@ -4,9 +4,10 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.thoughtworks.coral.utils.ActionHandler;
 
-public class SwitchRecent extends AnAction {
+public class SwitchFile extends AnAction {
     @Override
     public void actionPerformed(AnActionEvent e) {
-        new ActionHandler(e).switchToRecentFile();
+        ActionHandler handler = new ActionHandler(e);
+        handler.switchToNextFile();
     }
 }

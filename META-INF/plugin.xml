@@ -37,15 +37,15 @@
 
     <actions>
         <!-- Add your actions here -->
-        <action id="com.thoughtworks.coral.actions.SwitchRecent"
-                class="com.thoughtworks.coral.actions.SwitchRecent" text="来回切换"
-                description="在当前文件和刚才编辑的同名但不同类型文件之间来回切换">
+        <action id="com.thoughtworks.coral.actions.SwitchFile"
+                class="com.thoughtworks.coral.actions.SwitchFile" text="下个文件"
+                description="切换到同组的下一个文件">
             <add-to-group group-id="GoToErrorGroup" anchor="last"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl l"/>
         </action>
-        <action id="com.thoughtworks.coral.actions.SwitchRolling"
-                class="com.thoughtworks.coral.actions.SwitchRolling" text="轮流切换"
-                description="切换到同名但是扩展名不同的下一个文件">
+        <action id="com.thoughtworks.coral.actions.SwitchGroup"
+                class="com.thoughtworks.coral.actions.SwitchGroup" text="下个文件组"
+                description="切换到下一个文件组">
             <add-to-group group-id="GoToErrorGroup" anchor="last"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift l"/>
         </action>

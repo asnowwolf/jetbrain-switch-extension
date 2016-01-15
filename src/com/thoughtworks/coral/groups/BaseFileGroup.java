@@ -31,6 +31,10 @@ public abstract class BaseFileGroup implements FileGroup {
         return Optional.empty();
     }
 
+    public Optional<FileType> getDefaultType(List<FileType> excludes) {
+        return types.stream().filter(type -> excludes == null || !excludes.contains(type)).findFirst();
+    }
+
     public List<FileType> getTypes() {
         return types;
     }

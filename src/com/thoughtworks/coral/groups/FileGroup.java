@@ -9,5 +9,7 @@ import java.util.function.Predicate;
 public interface FileGroup {
     Optional<FileType> nextOf(final FileType type, final Predicate<? super FileType> skip);
 
+    Optional<FileType> getDefaultType(List<FileType> excludes);
+
     List<FileType> getTypes();
 }

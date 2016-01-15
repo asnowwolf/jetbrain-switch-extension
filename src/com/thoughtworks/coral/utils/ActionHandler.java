@@ -83,7 +83,7 @@ public class ActionHandler {
         new OpenFileDescriptor(getProject(), file.get()).navigate(true);
     }
 
-    void switchToNextFileInGroup(Optional<FileGroup> group) {
+    void switchToNextFileInGroup(Optional<FileGroup> group, Optional<FileGroup> prevGroup) {
         // 当前必须至少打开了一个文件
         assert getCurrentFile().isPresent();
         // 找出历史中第一个和当前文件属于同一个组的, 切换过去, 如果没指定则默认为html组
@@ -94,14 +94,19 @@ public class ActionHandler {
         String basePath = getBasePath(path);
         Optional<FileType> nextType = currentGroup.nextOf(type, acceptable(type, basePath));
 
-        if (nextType.isPresent()) {
-            Optional<Optional<VirtualFile>> nextFile = nextType.get().getExtensions().stream()
-                    .map(extension -> findFileByPath(basePath + extension))
-                    .filter(Optional::isPresent)
-                    .findFirst();
-            if (nextFile.isPresent()) {
-                openFile(nextFile.get());
-            }
+        // 把上一个组中的文件排除, 只找下一个组中特有的文件
+        List<FileType> excludes = null;
+        if (prevGroup.isPresent()) {
+            excludes = prevGroup.get().getTypes();
+        }
+        FileType defaultType = currentGroup.getDefaultType(excludes).get();
+        List<String> extensions = nextType.orElse(defaultType).getExtensions();
+        Optional<Optional<VirtualFile>> nextFile = extensions.stream()
+                .map(extension -> findFileByPath(basePath + extension))
+                .filter(Optional::isPresent)
+                .findFirst();
+        if (nextFile.isPresent()) {
+            openFile(nextFile.get());
         }
     }
 
@@ -113,12 +118,13 @@ public class ActionHandler {
     }
 
     public void switchToNextGroup() {
-        Optional<FileGroup> group = FileGroups.nextGroupOf(getCurrentType(), getLatestType());
-        switchToNextFileInGroup(group);
+        Optional<FileGroup> group = FileGroups.groupOf(getCurrentType(), getLatestType());
+        Optional<FileGroup> nextGroup = FileGroups.nextGroupOf(getCurrentType(), getLatestType());
+        switchToNextFileInGroup(nextGroup, group);
     }
 
     public void switchToNextFile() {
         Optional<FileGroup> group = FileGroups.groupOf(getCurrentType(), getLatestType());
-        switchToNextFileInGroup(group);
+        switchToNextFileInGroup(group, Optional.empty());
     }
 }

@@ -2,12 +2,13 @@
     <id>com.thoughtworks.coral.switch.extension</id>
     <name>switch-extension</name>
     <version>0.1</version>
-    <vendor email="zcwang@thoughtworks.com" url="http://www.thoughtworks.com">ThoughtWorks, Inc.</vendor>
+    <vendor email="zcwang@thoughtworks.com" url="http://www.thoughtworks.com">Zhicheng Wang @ ThoughtWorks</vendor>
 
     <description><![CDATA[
         在文件路径和基本名相同, 但扩展名不同的文件之间切换.
-        默认支持顺序为: html -> js或css, js -> test.js或html, css -> html, test.js -> js.
-        处理过程中, jade/htm扩展名等同于html, ts/coffee/es6扩展名等同于js, scss/less/styl扩展名等同于css.
+        安装后会在Navigate菜单下创建"下个文件"和"下个文件组"菜单.
+        定义三种组 - 内容组: html/js, 样式组: html/css, 逻辑组 js/test.js.
+        还支持更多扩展名: jade/htm等同于html, ts/coffee/jsx等同于js, scss/less/styl等同于css.
     ]]></description>
 
     <change-notes><![CDATA[

@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 public class StyleGroup extends BaseFileGroup {
     public StyleGroup() {
-        super(Arrays.asList(FileTypes.htmlFile, FileTypes.cssFile));
+        // 注意! 这里比较特殊, css必须在html前面, 否则会导致从Logic组切换过来时切换到html文件, 从而无法切换出css
+        super(Arrays.asList(FileTypes.cssFile, FileTypes.htmlFile));
     }
 }

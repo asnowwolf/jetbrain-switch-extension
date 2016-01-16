@@ -42,12 +42,12 @@
             <action id="com.thoughtworks.coral.actions.SwitchFile"
                     class="com.thoughtworks.coral.actions.SwitchFile" text="下个文件"
                     description="切换到同组的下一个文件">
-                <keyboard-shortcut keymap="$default" first-keystroke="cmd l"/>
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl l"/>
             </action>
             <action id="com.thoughtworks.coral.actions.SwitchGroup"
                     class="com.thoughtworks.coral.actions.SwitchGroup" text="下个文件组"
                     description="切换到下一个文件组">
-                <keyboard-shortcut keymap="$default" first-keystroke="cmd shift l"/>
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift l"/>
             </action>
             <add-to-group group-id="GoToMenu" anchor="last"/>
         </group>

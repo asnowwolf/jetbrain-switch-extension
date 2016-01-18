@@ -76,7 +76,7 @@ public class ActionHandler {
     }
 
     String getBasePath(String path) {
-        return path.replaceAll("(.test)?.\\w+$", "");
+        return path.replaceAll("(.test)?\\.\\w+$", "");
     }
 
     void openFile(Optional<VirtualFile> file) {
